@@ -1,20 +1,14 @@
 import DND1
 
+
 def main():
-    type = diceType()
-    rolls = numberOfRolls()
-    dnd_player_1 = DND1.DNDice(type)
-    dnd_player_1.roll(rolls)
 
-def diceType():
-    sides = input("Enter the number of sides: ")
-    return sides
-def numberOfRolls():
-    rolls = input("Enter the number of rolls: ")
-    return rolls
+    dnd_player_1 = DND1.DNDice()
+    diceSelected = dnd_player_1.userInputDiceSelection()
+    numberOfRolls = dnd_player_1.userInputRolls()
+    total = dnd_player_1.roll(numberOfRolls, diceSelected)
+    print(f"The total of the dice is: {total}")
 
-
-    
 
 if __name__ == "__main__":
     main()
