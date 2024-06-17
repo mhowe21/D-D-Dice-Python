@@ -25,6 +25,7 @@ def main():
         elif playAgain.lower() == "n" or playAgain.lower() == "no":
             print("Thanks for rolling with us!")
             continueRolling = False
+            exit()
         else:
             inputValidation = False
             while inputValidation == False:
@@ -37,6 +38,7 @@ def main():
                     print("Thanks for rolling with us!")
                     continueRolling = False
                     inputValidation = True
+                    exit()
                 else:
                     inputValidation = False
 

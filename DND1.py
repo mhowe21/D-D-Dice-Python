@@ -38,6 +38,7 @@ class DNDice:
         for i in range(self.numRolls):
             self.timesRolled += 1
             self.diceResult = random.randint(1, int(self.dicetype))
+            # this checks if the roll is a 1 or 20 on a D20, and prints a message accordingly
             if self.diceResult == 20 and self.dicetype == 20:
                 print(f"Roll {i+1}: {self.diceResult}! Critical Success!!")
             elif self.diceResult == 1 and self.dicetype == 20:
