@@ -1,34 +1,54 @@
 import random
 
-# class for imput for dice type
+# class for imput and rolls for DnD dice
 
 
 class DNDice:
     def __init__(self):
+        # initializes an instance of the DNDice class
+        """
+        Initializes an instance of the DNDice class.
+
+        This constructor sets the initial value of the `timesRolled` attribute to 0.
+        The `timesRolled` attribute keeps track of the number of times the dice has been rolled.
+
+        Parameters:
+            self (DNDice): The instance of the DNDice class.
+
+        Returns:
+            None
+        """
         self.timesRolled = 0
 
-    def roll(self, num_rolls, dicetype):
+    def roll(self, numRolls, dicetype):
+        # this method rolls a dice a set multiple of times based on the numb_rolls input and prints the result of each roll
         """
-        Rolls a dice multiple times and prints the result of each roll.
+        Rolls a dice a set multiple of times based on the numb_rolls input and prints the result of each roll.
 
         Args:
-            num_rolls (int): The number of times to roll the dice.
+            numRolls (int): The number of times to roll the dice.
 
         Returns:
             sum of dice rolls (int): The sum of the dice rolls.
         """
         self.dicetype = dicetype
-        self.num_rolls = int(num_rolls)
+        self.numRolls = int(numRolls)
         self.sumOfRolls = 0
         self.diceResult = 0
-        for i in range(self.num_rolls):
+        for i in range(self.numRolls):
             self.timesRolled += 1
             self.diceResult = random.randint(1, int(self.dicetype))
-            print(f"Roll {i+1}: {self.diceResult}")
+            if self.diceResult == 20 and self.dicetype == 20:
+                print(f"Roll {i+1}: {self.diceResult}! Critical Success!!")
+            elif self.diceResult == 1 and self.dicetype == 20:
+                print(f"Roll {i+1}: {self.diceResult}! Critical failure...")
+            else:
+                print(f"Roll {i+1}: {self.diceResult}")
             self.sumOfRolls += self.diceResult
         return self.sumOfRolls
 
     def userInputDiceSelection(self):
+        # this method prompts the user to enter the number of sides for a dice and validates the input
         """
         Prompts the user to enter the number of sides for a dice and validates the input.
 
@@ -46,16 +66,22 @@ class DNDice:
 
         self.dicetype = 0
         self.validInput = False
+        # this loop runs until the user enters a valid input
         while self.validInput == False:
             try:
-                self.dicetype = int(input("Enter the number of sides: "))
-                self.validInput = True
+                self.dicetype = abs(
+                    int(input("Enter the number of sides on the dice: ")))
+                if self.dicetype > 0:
+                    self.validInput = True
+                else:
+                    self.validInput = False
             except ValueError:
                 print("Invalid input. Please enter a number.")
 
         return self.dicetype
 
-    def userInputRolls(self):
+    def userInputRollSelection(self):
+        # this method prompts the user to enter the number of rolls and validates the input
         """
         Prompts the user to enter the number of rolls and validates the input.
 
@@ -74,8 +100,20 @@ class DNDice:
         self.validInput = False
         while self.validInput == False:
             try:
-                self.rolls = int(input("Enter the number of rolls: "))
-                self.validInput = True
+                self.rolls = abs(int(input("Enter the number of rolls: ")))
+                if self.rolls > 0:
+                    self.validInput = True
+                else:
+                    self.validInput = False
             except ValueError:
                 print("Invalid input. Please enter a number.")
         return self.rolls
+
+    def getNumberOfTimesRolled(self):
+        # this method returns the number of times the dice has been rolled
+        """function that returns the number of times the dice has been rolled
+
+        Returns:
+            int: total number of times the dice has been rolled
+        """
+        return self.timesRolled
