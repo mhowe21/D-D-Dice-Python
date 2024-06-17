@@ -33,7 +33,7 @@ def main():
                 if playAgain.lower() == "y" or playAgain.lower() == "yes":
                     continueRolling = True
                     inputValidation = True
-                elif playAgain.lower() == "n":
+                elif playAgain.lower() == "n" or playAgain.lower() == "no":
                     print("Thanks for rolling with us!")
                     continueRolling = False
                     inputValidation = True
