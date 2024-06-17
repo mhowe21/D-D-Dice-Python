@@ -1,6 +1,6 @@
 import random
 
-# class for imput and rolls for DnD dice
+# class for input and rolls for DnD dice
 
 
 class DNDice:
@@ -52,7 +52,7 @@ class DNDice:
         """
         Prompts the user to enter the number of sides for a dice and validates the input.
 
-        This function repeatedly prompts the user to enter the number of sides for a dice until a valid integer is entered. It uses a while loop to continue prompting the user until a valid input is provided. The input is converted to an integer using the `int()` function and stored in the `dicetype` attribute of the instance.
+        This method repeatedly prompts the user to enter the number of sides for a dice until a valid integer is entered. It uses a while loop to continue prompting the user until a valid input is provided. The input is converted to an integer using the `int()` function and stored in the `dicetype` attribute of the instance.
 
         Parameters:
             self (object): The instance of the class.
